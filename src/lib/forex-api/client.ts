@@ -1,4 +1,3 @@
-
 export class ForexApiClient {
   private static singleton: ForexApiClient;
 
@@ -17,7 +16,10 @@ export class ForexApiClient {
   /**
    * Create a singleton instance of the ForexApiClient.
    */
-  public static createClient(baseUrl: string, apiToken: string): ForexApiClient {
+  public static createClient(
+    baseUrl: string,
+    apiToken: string
+  ): ForexApiClient {
     if (!ForexApiClient.singleton) {
       ForexApiClient.singleton = new ForexApiClient(baseUrl, apiToken);
     }
@@ -32,15 +34,20 @@ export class ForexApiClient {
    * @param body Request body.
    * @returns Promise<Response>
    */
-  private async request(method: string, path: string, headers?: { [key: string]: string }, body?: BodyInit) {
+  private async request(
+    method: string,
+    path: string,
+    headers?: { [key: string]: string },
+    body?: BodyInit
+  ) {
     return await fetch(`${this.baseUrl}${path}`, {
       method,
       headers: {
-        'token': this.apiToken,
-        ...headers
+        token: this.apiToken,
+        ...headers,
       },
-      body
-    })
+      body,
+    });
   }
 
   /**
@@ -49,8 +56,12 @@ export class ForexApiClient {
    * @param to string
    * @returns ReadableStream
    */
-  public async getRates(from: string, to: string): Promise<ReadableStream<Uint8Array>> {
-    return await this.request('GET', `/streaming/rates?pair=${from}${to}`)
-      .then(response => response.body as ReadableStream<Uint8Array>);
+  public async getRates(
+    from: string,
+    to: string
+  ): Promise<ReadableStream<Uint8Array>> {
+    return await this.request("GET", `/streaming/rates?pair=${from}${to}`).then(
+      (response) => response.body as ReadableStream<Uint8Array>
+    );
   }
 }
