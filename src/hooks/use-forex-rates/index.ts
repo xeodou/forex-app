@@ -1,3 +1,4 @@
+import { NotifyType, useNotify } from "hooks/use-notify";
 import { forexApiClient } from "lib/forex-api-client";
 import { CurrencyRate } from "lib/forex-api/client";
 import { StreamReader } from "lib/forex-api/stream-reader";
@@ -14,7 +15,7 @@ import { useCallback, useEffect, useState } from "react";
 export const useForexRates = (from: string, to: string, limit = 40) => {
   const [streamReader, setStreamReader] = useState<StreamReader<CurrencyRate[]>>();
   const [forexRates, setForexRates] = useState<CurrencyRate[]>([]);
-  const [forexError, setForexError] = useState<Error>();
+  const { addNotifyItem } = useNotify();
 
   // Read the chunk from the stream
   const readChunk = (rates: CurrencyRate[]) => {
@@ -36,8 +37,13 @@ export const useForexRates = (from: string, to: string, limit = 40) => {
       setStreamReader(reader);
       await reader.read(readChunk);
     } catch (error) {
-      console.log(error);
-      setForexError(error as Error);
+      console.error(error);
+
+      streamReader?.cancel();
+      addNotifyItem({
+        message: `Error fetching forex rates: ${(error as Error).message}`,
+        type: NotifyType.Error,
+      });
     }
   };
 
@@ -46,7 +52,6 @@ export const useForexRates = (from: string, to: string, limit = 40) => {
    */
   const reset = useCallback(() => {
     setForexRates([]);
-    setForexError(undefined);
     fetchForexRates();
   }, [streamReader]);
 
@@ -63,7 +68,6 @@ export const useForexRates = (from: string, to: string, limit = 40) => {
 
   return {
     forexRates,
-    forexError,
     reset,
   };
 };

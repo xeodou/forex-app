@@ -1,6 +1,6 @@
 import "../../styles/index.scss";
 import type { AppProps } from "next/app";
-import { CurrencyPair, CurrencyPairProvider, defaultCurrencyPair } from "hooks/use-currency-pair";
+import { CurrencyPair, CurrencyPairProvider, defaultCurrencyPair, NotifyContextProvider } from "hooks";
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -9,7 +9,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <CurrencyPairProvider initialValue={currencyPair as CurrencyPair}>
-      <Component {...pageProps} />
+      <NotifyContextProvider>
+        <Component {...pageProps} />
+      </NotifyContextProvider>
     </CurrencyPairProvider>
   );
 }
