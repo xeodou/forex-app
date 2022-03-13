@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   api:
@@ -11,15 +11,15 @@ services:
 
   app:
     build:
-        context: .
-        dockerfile: Dockerfile.dev
+      context: .
+      dockerfile: Dockerfile.dev
     restart: always
     ports:
       - 3000:3000
     volumes:
-      - './:/app'
-      - '/app/node_modules'
-      - '/app/.next'
+      - "./:/app"
+      - "/app/node_modules"
+      - "/app/.next"
     networks:
       - internal
 

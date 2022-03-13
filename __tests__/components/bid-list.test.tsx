@@ -29,7 +29,7 @@ describe("bid-list", () => {
   let toLocaleTimeString: jest.SpyInstance<string, any>;
 
   beforeEach(() => {
-    toLocaleTimeString = jest.spyOn(Date.prototype, 'toLocaleString');
+    toLocaleTimeString = jest.spyOn(Date.prototype, "toLocaleString");
     container = document.createElement("div");
     document.body.appendChild(container);
   });
