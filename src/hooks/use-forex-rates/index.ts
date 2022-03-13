@@ -3,11 +3,20 @@ import { CurrencyRate } from "lib/forex-api/client";
 import { StreamReader } from "lib/forex-api/stream-reader";
 import { useCallback, useEffect, useState } from "react";
 
+/**
+ * Hook to fetch forex rates from the forex api.
+ *
+ * @param from The currency to convert from
+ * @param to The currency to convert to
+ * @param limit The maximum number of rates to return
+ * @returns
+ */
 export const useForexRates = (from: string, to: string, limit = 40) => {
   const [streamReader, setStreamReader] = useState<StreamReader<CurrencyRate[]>>();
   const [forexRates, setForexRates] = useState<CurrencyRate[]>([]);
   const [forexError, setForexError] = useState<Error>();
 
+  // Read the chunk from the stream
   const readChunk = (rates: CurrencyRate[]) => {
     setForexRates((old) => {
       if (old.length >= limit) {
