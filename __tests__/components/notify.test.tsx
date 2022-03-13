@@ -8,7 +8,7 @@ import { FC } from "react";
 describe("notify", () => {
   let container: HTMLDivElement;
 
-  const Wrapper: FC<{initialValue: NotifyItem[]}> = ({ initialValue }) => (
+  const Wrapper: FC<{ initialValue: NotifyItem[] }> = ({ initialValue }) => (
     <NotifyContextProvider initialValue={initialValue}>
       <Notify />
     </NotifyContextProvider>
@@ -29,22 +29,22 @@ describe("notify", () => {
     const item: NotifyItem = {
       id: Date.now(),
       type: NotifyType.Success,
-      message: 'lorem'
-    }
+      message: "lorem",
+    };
     act(() => {
-      render(<Wrapper initialValue={[item]}/>, container);
+      render(<Wrapper initialValue={[item]} />, container);
     });
 
     expect(pretty(container.innerHTML)).toMatchSnapshot();
 
     expect(container.querySelector("div.notify-container")).toBeTruthy();
-    expect(container.querySelector('p')?.textContent).toEqual('lorem');
+    expect(container.querySelector("p")?.textContent).toEqual("lorem");
 
     const button = container.querySelector("button") as HTMLButtonElement;
     expect(button).toBeTruthy();
 
     fireEvent.click(button);
 
-    expect(container.querySelector('p')).toBeFalsy();
+    expect(container.querySelector("p")).toBeFalsy();
   });
 });

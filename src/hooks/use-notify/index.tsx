@@ -6,8 +6,11 @@ export enum NotifyType {
 }
 
 export interface NotifyItem {
+  // Identify of the message, default will be the timestamp added to the stack
   id?: number;
+  // Notification type
   type?: NotifyType;
+  // The notification message
   message: string;
 }
 

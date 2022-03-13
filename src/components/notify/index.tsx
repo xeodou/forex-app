@@ -8,15 +8,7 @@ export const Notify = () => {
 
   const onDismiss = (id: number) => {
     removeNotifyItem(id);
-  }
+  };
 
-  return (
-    <div className="notify-container">
-      {
-        lastItem && (
-          <Item item={lastItem} onDismiss={onDismiss}/>
-        )
-      }
-    </div>
-  );
-}
+  return <div className="notify-container">{lastItem && <Item item={lastItem} onDismiss={onDismiss} />}</div>;
+};
