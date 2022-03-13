@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`currency-selector should render the selector 1`] = `
+"<select class=\\"h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm \\">
+  <option value=\\"USD\\">USD</option>
+  <option value=\\"JPY\\">JPY</option>
+  <option value=\\"BGN\\">BGN</option>
+  <option value=\\"CNY\\">CNY</option>
+</select>"
+`;
+
+exports[`currency-selector should render with default value 1`] = `
+"<select class=\\"h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm \\">
+  <option value=\\"USD\\">USD</option>
+  <option value=\\"JPY\\">JPY</option>
+  <option value=\\"BGN\\">BGN</option>
+  <option value=\\"CNY\\">CNY</option>
+</select>"
+`;
+
+exports[`currency-selector should select different option 1`] = `
+"<select class=\\"h-full py-0 pl-4 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm \\">
+  <option value=\\"USD\\">USD</option>
+  <option value=\\"JPY\\">JPY</option>
+  <option value=\\"BGN\\">BGN</option>
+  <option value=\\"CNY\\">CNY</option>
+</select>"
+`;
