@@ -43,7 +43,7 @@ describe("bid-list", () => {
 
   it("should render the list", () => {
     // Mock the toLocaleString returns to keep the same return across the different CI server.
-    toLocaleTimeString.mockReturnValueOnce("3/12/2022, 10:37:44 PM");
+    toLocaleTimeString.mockReturnValue("3/12/2022, 2:37:44 PM");
 
     act(() => {
       render(<BidsList rates={mockRates} />, container);
