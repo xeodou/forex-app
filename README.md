@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Forex Application
+
+The Forex Applicaiton is built on top of the [Next.js](https://nextjs.org/) and use [tailwind CSS](https://tailwindcss.com/docs/installation) library.
 
 ## Getting Started
 
-First, run the development server:
+Before you get start, you will ensure you have [Node.JS](https://nodejs.org/), [yarn](https://yarnpkg.com/), [Docker](https://www.docker.com/) installed.
 
-```bash
-npm run dev
-# or
+### Install dependecies
+
+Please run the following command to install the depencies:
+
+```
+yarn
+```
+
+### Start the application
+
+Before start the application, you will need to specific the application environment variables, for instance, create a `.env.local` file and with the following content:
+
+```
+// The forex-api endpoint
+NEXT_PUBLIC_FOREX_API_BASE_URL=http://localhost:8080
+// The forex-api token
+NEXT_PUBLIC_FOREX_API_TOKEN=10dc303535874aeccc86a8251e6992f5
+
+```
+
+Then run the following command to start the application:
+
+```
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### How to contribute
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Please follow the following practice when you are contribte to the project.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Adding the components into `src/components` folder
+- Adding the React Hook into `src/hooks` folder and expose the API in `src/hooks/index.ts` file
+- Adding pages into `src/pages`
+- Adding shared libraries into `src/lib` folder
+- Adding unit testing into `__test__`
+- Plz follow https://www.conventionalcommits.org/ to write your git commit message
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+There are some usefull commands that can help you improve your commit quality:
 
-## Learn More
+- Auto prettier your changes: `yarn prettier`
+- Lint your change: `yarn lint`
 
-To learn more about Next.js, take a look at the following resources:
+### Build for production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Please run the following command to create the production build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+yarn build
+```

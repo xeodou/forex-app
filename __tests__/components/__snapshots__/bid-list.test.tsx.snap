@@ -6,13 +6,13 @@ exports[`bid-list should render the list 1`] = `
   <div class=\\"h-60 overflow-y-auto flex flex-col\\">
     <ul class=\\"flex justify-around bg-slate-300\\">
       <li>USD/JPY</li>
-      <li>3/12/2022, 10:36:44 PM</li>
+      <li>3/12/2022, 2:37:44 PM</li>
       <li>0.7839126536448034</li>
       <li>0.8014505466183891</li>
     </ul>
     <ul class=\\"flex justify-around bg-slate-100 \\">
       <li>USD/JPY</li>
-      <li>3/12/2022, 10:37:44 PM</li>
+      <li>3/12/2022, 2:37:44 PM</li>
       <li>0.7839126536448034</li>
       <li>0.8014505466183891</li>
     </ul>
