@@ -1,6 +1,7 @@
 import { BidsList } from "components/bids-list";
 import { CurrencySwap } from "components/currency-swap";
 import { IconFresh } from "components/icons";
+import { Notify } from "components/notify";
 import { useCurrencyPair, useForexRates } from "hooks";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
   const { forexRates, reset } = useForexRates(currencyPair[0], currencyPair[1]);
 
   return (
-    <div>
+    <div className="relative">
       <Head>
         <title>Foreign Exchange Application</title>
         <meta name="description" content="Realtime foreign exchange for broker" />
@@ -25,6 +26,9 @@ const Home: NextPage = () => {
         </header>
         <BidsList rates={forexRates}></BidsList>
       </main>
+      <div className="container fixed mx-auto bottom-0 z-20 w-1/2 m-auto inset-x-0 ">
+        <Notify></Notify>
+      </div>
     </div>
   );
 };
