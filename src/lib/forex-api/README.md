@@ -7,8 +7,5 @@ You can use it by import the library directly and create a singletone instance o
 ```typescript
 import { ForexApiClient } from "forex-api/client";
 
-const forexApiClient = ForexApiClient.createClient(
-  "http://localhost:8080",
-  "your_forex_api_token"
-);
+const forexApiClient = ForexApiClient.createClient("http://localhost:8080", "your_forex_api_token");
 ```

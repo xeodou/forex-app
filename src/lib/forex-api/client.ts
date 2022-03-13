@@ -1,3 +1,13 @@
+import { StreamReader } from "./stream-reader";
+
+export interface CurrencyRate {
+  ask: number;
+  bid: number;
+  from: string;
+  to: string;
+  price: number;
+  time_stamp: string;
+}
 export class ForexApiClient {
   private static singleton: ForexApiClient;
 
@@ -16,10 +26,7 @@ export class ForexApiClient {
   /**
    * Create a singleton instance of the ForexApiClient.
    */
-  public static createClient(
-    baseUrl: string,
-    apiToken: string
-  ): ForexApiClient {
+  public static createClient(baseUrl: string, apiToken: string): ForexApiClient {
     if (!ForexApiClient.singleton) {
       ForexApiClient.singleton = new ForexApiClient(baseUrl, apiToken);
     }
@@ -34,12 +41,7 @@ export class ForexApiClient {
    * @param body Request body.
    * @returns Promise<Response>
    */
-  private async request(
-    method: string,
-    path: string,
-    headers?: { [key: string]: string },
-    body?: BodyInit
-  ) {
+  private async request(method: string, path: string, headers?: { [key: string]: string }, body?: BodyInit) {
     return await fetch(`${this.baseUrl}${path}`, {
       method,
       headers: {
@@ -54,14 +56,11 @@ export class ForexApiClient {
    * Get the realtime rates for the given pair.
    * @param from string
    * @param to string
-   * @returns ReadableStream
+   * @returns StreamReader
    */
-  public async getRates(
-    from: string,
-    to: string
-  ): Promise<ReadableStream<Uint8Array>> {
+  public async getRates(from: string, to: string): Promise<StreamReader<CurrencyRate[]>> {
     return await this.request("GET", `/streaming/rates?pair=${from}${to}`).then(
-      (response) => response.body as ReadableStream<Uint8Array>
+      (response) => new StreamReader(response.body as ReadableStream<Uint8Array>)
     );
   }
 }
