@@ -26,8 +26,10 @@ const mockRates = [
 
 describe("bid-list", () => {
   let container: HTMLDivElement;
+  let toLocaleTimeString: jest.SpyInstance<string, any>;
 
   beforeEach(() => {
+    toLocaleTimeString = jest.spyOn(Date.prototype, 'toLocaleString');
     container = document.createElement("div");
     document.body.appendChild(container);
   });
@@ -36,9 +38,13 @@ describe("bid-list", () => {
     unmountComponentAtNode(container);
     container.remove();
     container = null as unknown as HTMLDivElement;
+    toLocaleTimeString.mockRestore();
   });
 
   it("should render the list", () => {
+    // Mock the toLocaleString returns to keep the same return across the different CI server.
+    toLocaleTimeString.mockReturnValueOnce("3/12/2022, 10:37:44 PM");
+
     act(() => {
       render(<BidsList rates={mockRates} />, container);
     });
