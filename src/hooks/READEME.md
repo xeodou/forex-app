@@ -32,3 +32,15 @@ const {
   reset,
 } = useForexRates();
 ```
+
+### use-notify
+
+This is a global hooks that will matain the notify message context.
+
+Usage:
+
+```typescript
+import { useNotify } from "hooks";
+
+const { stack, removeNotifyItem } = useNotify();
+```

@@ -1,5 +1,5 @@
 import { act } from "@testing-library/react-hooks";
-import { IconFresh, IconSwap } from "components/icons";
+import { IconClose, IconFresh, IconSwap } from "components/icons";
 import { render, unmountComponentAtNode } from "react-dom";
 import pretty from "pretty";
 
@@ -33,6 +33,18 @@ describe("icons", () => {
     it("should render the icon", () => {
       act(() => {
         render(<IconFresh />, container);
+      });
+
+      expect(pretty(container.innerHTML)).toMatchSnapshot();
+
+      expect(container.querySelector("svg")).toBeTruthy();
+    });
+  });
+
+  describe("icon-close", () => {
+    it("should render the icon", () => {
+      act(() => {
+        render(<IconClose />, container);
       });
 
       expect(pretty(container.innerHTML)).toMatchSnapshot();
