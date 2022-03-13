@@ -2,5 +2,8 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
 import { enableFetchMocks } from "jest-fetch-mock";
+import { TextDecoder } from "util";
 
 enableFetchMocks();
+
+global.TextDecoder = TextDecoder;
