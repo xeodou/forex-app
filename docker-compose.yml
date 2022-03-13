@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  api:
+    image: paidyinc/one-frame
+    container_name: one-frame-api
+    ports:
+      - 8080:8080
+    networks:
+      - internal
+
+  app:
+    build:
+        context: .
+        dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+      - '/app/.next'
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
