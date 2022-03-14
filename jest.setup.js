@@ -7,3 +7,6 @@ import { TextDecoder } from "util";
 enableFetchMocks();
 
 global.TextDecoder = TextDecoder;
+
+// Set envs
+process.env.NEXT_PUBLIC_FOREX_API_BASE_URL = "http://localhost:8080";
