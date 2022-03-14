@@ -1,6 +1,6 @@
 import { CurrencyRate } from "lib/forex-api/client";
 import { StreamReader } from "lib/forex-api/stream-reader";
-import { TextEncoder } from "util";
+import { mockCurrencyRate, newStreamResponse } from "../fixture/mock-data";
 
 const mockData = [
   {
@@ -17,26 +17,8 @@ describe("stream-reader", () => {
   let streamReader: StreamReader<CurrencyRate>;
 
   it("should create an instane of stream-reader", async () => {
-    streamReader = new StreamReader<CurrencyRate>({
-      // @ts-ignore
-      getReader() {
-        let count = 0;
-        return {
-          async read() {
-            const encoder = new TextEncoder();
-            const uint8array = encoder.encode(JSON.stringify(mockData));
-            count++;
-            return Promise.resolve({ value: uint8array, done: count > 1 });
-          },
-          cancel() {
-            return Promise.resolve();
-          },
-        };
-      },
-      cancel() {
-        return Promise.resolve();
-      },
-    });
+    const response = await newStreamResponse(mockCurrencyRate);
+    streamReader = new StreamReader<CurrencyRate>(response.body as ReadableStream<Uint8Array>);
   });
 
   it("should read the chunk from the stream", async () => {
