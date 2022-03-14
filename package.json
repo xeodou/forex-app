@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test start http://localhost:3000 cypress",
+    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "next": "12.1.0",
@@ -23,6 +27,7 @@
     "@types/pretty": "^2.0.1",
     "@types/react": "17.0.40",
     "autoprefixer": "^10.4.2",
+    "cypress": "^9.5.1",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "husky": "^7.0.4",

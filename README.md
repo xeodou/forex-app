@@ -48,6 +48,10 @@ There are some usefull commands that can help you improve your commit quality:
 - Auto prettier your changes: `yarn prettier`
 - Lint your change: `yarn lint`
 
+### Adding E2E testing script
+
+The project is using [cypress](https://docs.cypress.io/) to write the E2E testing scripts. Please the read doc adding the proper testing script under `cypress/integration` folder.
+
 ### Build for production
 
 Please run the following command to create the production build.
