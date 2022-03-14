@@ -10,9 +10,7 @@
     "prettier": "prettier --write .",
     "test": "jest",
     "cypress": "cypress open",
-    "cypress:headless": "cypress run",
-    "e2e": "start-server-and-test start http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
+    "cypress:headless": "cypress run"
   },
   "dependencies": {
     "next": "12.1.0",
