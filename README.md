@@ -32,6 +32,8 @@ Then run the following command to start the application:
 yarn dev
 ```
 
+*You can also start the local development environment by just using docker-compose up*
+
 ### How to contribute
 
 Please follow the following practice when you are contribte to the project.
